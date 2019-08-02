@@ -22,7 +22,7 @@ def reshape_data(ratings, print_prog=True):
             last_print = print_progress(i, len(ratings), start_time, last_print, 'Reshaping data')
 
     if print_prog:
-        print("100%% finished reshape in %.1f seconds" % (time.time() - start_time))
+        print("\r100%% finished reshape in %.1f seconds" % (time.time() - start_time))
 
     return R, Y
 
@@ -43,7 +43,7 @@ def reshape_data_R(df, print_prog=True):
             last_print = print_progress(i, len(df), start_time, last_print, 'Reshaping data')
 
     if print_prog:
-        print("100%% finished reshape in %.1f seconds" % (time.time() - start_time))
+        print("\r100%% finished reshape in %.1f seconds" % (time.time() - start_time))
 
     return R
 
@@ -68,7 +68,7 @@ def write_predictions(prediction_matrix, test_R, file_name):
             i += 1
 
         it.iternext()
-    print("100%% finished writing predictions in %.1f seconds" % (time.time() - start_time))
+    print("\r100%% finished writing predictions in %.1f seconds" % (time.time() - start_time))
     f.close()
 
 def print_progress(curr, total, start_time, last_print, str=''):
@@ -79,11 +79,11 @@ def print_progress(curr, total, start_time, last_print, str=''):
         percent_done = curr / total * 100
 
         if (str):
-            print("%s -- " % str, end='')
+            print("\r%s -- " % str, end='')
         if (time_remaining > 60):
-            print("%.1f%% %.0f minutes remaining" % (percent_done, time_remaining/60))
+            print("%.1f%% %.0f minutes remaining" % (percent_done, time_remaining/60), end='')
         else:
-            print("%.1f%% %.0f seconds remaining" % (percent_done, time_remaining))
+            print("%.1f%% %.0f seconds remaining" % (percent_done, time_remaining), end='')
         last_print = time.time()
 
     return last_print

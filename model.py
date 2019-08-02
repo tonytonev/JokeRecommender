@@ -197,7 +197,7 @@ def model(n_iterations = 200, learning_rate = 0.001, n_features = 100, lamb = 10
         Theta -= learning_rate * Theta_grad
 
     if print_cost:
-        print("Finished training model in %.1f minutes. Cost: %.0f" % ((time.time() - start_time) / 60, J))
+        print("\rFinished training model in %.1f minutes. Cost: %.0f" % ((time.time() - start_time) / 60, J))
 
     return X, Theta
 
