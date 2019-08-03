@@ -148,7 +148,7 @@ def test_grad():
 #
 # Returns trained parameter X and Theta
 
-def model(n_iterations = 200, learning_rate = 0.001, n_features = 100, lamb = 10, print_cost = True, params = None):
+def model(n_iterations = 200, learning_rate = 0.001, n_features = 200, lamb = 5, print_cost = True, params = None):
     # Load CSV's
     jokes = pd.read_csv('data/jokes.csv')
     ratings = pd.read_csv('data/train.csv')
@@ -160,6 +160,7 @@ def model(n_iterations = 200, learning_rate = 0.001, n_features = 100, lamb = 10
         # Try to load cached Y and R from file, so we don't have to reshape the data each time
         Y = np.load('cache/Y.npy')
         R = np.load('cache/R.npy')
+        print('Loaded Y and R from cache')
     except:
         if print_cost:
             print('Reshaping training data to get Y and R')
@@ -197,7 +198,7 @@ def model(n_iterations = 200, learning_rate = 0.001, n_features = 100, lamb = 10
         Theta -= learning_rate * Theta_grad
 
     if print_cost:
-        print("\rFinished training model in %.1f minutes. Cost: %.0f" % ((time.time() - start_time) / 60, J))
+        print("\rFinished training model in %.1f minutes. Cost: %.0f            " % ((time.time() - start_time) / 60, J))
 
     return X, Theta
 
