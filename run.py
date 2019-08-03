@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+
+"""
+Created on Wed Jul 31, 2019
+
+@author: Tony Tonev
+"""
 import os
 from model import *
 import numpy as np
