@@ -37,8 +37,10 @@ except:
     np.save('cache/X.npy', X)
     np.save('cache/Theta.npy', Theta)
 
-# Make predictions and write them in the expected contest format
-prediction_matrix = predict(X, Theta)
+
 if not os.path.isdir('predictions'):
     os.mkdir('predictions')
+
+# Make predictions and write them in the expected contest format
+prediction_matrix = predict(X, Theta)
 write_predictions(prediction_matrix, test_R, 'predictions/pred.csv')

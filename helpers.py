@@ -27,7 +27,7 @@ def reshape_data(ratings, print_prog=True):
             last_print = print_progress(i, len(ratings), start_time, last_print, 'Reshaping data')
 
     if print_prog:
-        print("\r100%% finished reshape in %.1f seconds                                      " % (time.time() - start_time))
+        print("\rFinished reshape in %.1f seconds                                      " % (time.time() - start_time))
 
     return R, Y
 
@@ -48,7 +48,7 @@ def reshape_data_R(df, print_prog=True):
             last_print = print_progress(i, len(df), start_time, last_print, 'Reshaping data')
 
     if print_prog:
-        print("\r100%% finished reshape in %.1f seconds                                 " % (time.time() - start_time))
+        print("\rFinished reshape in %.1f seconds                                 " % (time.time() - start_time))
 
     return R
 
@@ -73,7 +73,7 @@ def write_predictions(prediction_matrix, test_R, file_name):
             i += 1
 
         it.iternext()
-    print("\r100%% finished writing predictions in %.1f seconds                                " % (time.time() - start_time))
+    print("\rFinished writing predictions in %.1f seconds                                " % (time.time() - start_time))
     f.close()
 
 def print_progress(curr, total, start_time, last_print, str=''):

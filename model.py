@@ -15,7 +15,7 @@ from helpers import *
 # Randomly initialize X and Theta based on the dimensions given
 #
 # n_users is the number of users
-# n_jokes is the number of users
+# n_jokes is the number of jokes
 # n_features is the number of features to use
 #
 # Returns a tuple of (X, Theta)
@@ -147,13 +147,6 @@ def test_grad():
 # Returns trained parameter X and Theta
 
 def model(n_iterations = 200, learning_rate = 0.001, n_features = 200, lamb = 5, print_cost = True, params = None):
-    # Load CSV's
-    jokes = pd.read_csv('data/jokes.csv')
-    ratings = pd.read_csv('data/train.csv')
-
-    n_users = len(ratings.user_id.unique())
-    n_jokes = len(ratings.joke_id.unique())
-    
     try:
         # Try to load cached Y and R from file, so we don't have to reshape the data each time
         Y = np.load('cache/Y.npy')
@@ -162,10 +155,14 @@ def model(n_iterations = 200, learning_rate = 0.001, n_features = 200, lamb = 5,
     except:
         if print_cost:
             print('Reshaping training data to get Y and R')
+        # Load CSV
+        ratings = pd.read_csv('data/train.csv')
         Y, R = reshape_data(ratings)
 
         np.save('cache/Y.npy', Y)
         np.save('cache/R.npy', R)
+
+    n_jokes, n_users = Y.shape
 
     X = None
     Theta = None
@@ -173,7 +170,7 @@ def model(n_iterations = 200, learning_rate = 0.001, n_features = 200, lamb = 5,
         # If params are given continue training existing model
         X, Theta = params
     else:
-        # If no params given, initialize X and Theta with 100 features
+        # If no params given, initialize X and Theta
         X, Theta = initialize_parameters(n_users, n_jokes, n_features)
 
     J = None
