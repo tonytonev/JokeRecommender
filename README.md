@@ -10,3 +10,11 @@ The output will show up in /predictions/pred.csv.
 Parameters X and Theta are cached in /cache/ after training, and loaded for use the next time. 
 If you want to train a new model you can delete /cache/X.npy and /cache/Theta.npy or modify run.py.
 Modify run.py to change the hyper parameters of the model.
+
+If you want to continue train a model from cached parameters X and Theta for more iterations, you can do so like so:
+
+    X = np.load('cache/X.npy')
+    Theta = np.load('cache/Theta.npy')
+    X, Theta = model(params = (X, Theta))
+    
+The function model() will continue training with the given X and Theta. Note that the number of features must be the same or the dimensions won't match up and it cause an error. 
