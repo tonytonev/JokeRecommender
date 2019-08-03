@@ -1,6 +1,8 @@
 # JokeRecommender
 My solution to the Jester Practice Problem on analyticsvidhya.com -- https://datahack.analyticsvidhya.com/contest/jester-practice-problem/
 
+The approach I used is collaborative filtering based on the example from the week 8 homework assignment of the Machine Learning class on Coursera.
+
 To train a model and write predictions to a csv, simply run:
 
   python3 run.py
