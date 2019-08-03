@@ -25,7 +25,7 @@ try:
     print('Loaded X and Theta from cache')
 except:
     # Otherwise, train a model and cache the parameters
-    X, Theta = model()
+    X, Theta = model(n_iterations = 200, learning_rate = 0.001, n_features = 200, lamb = 5, print_cost = True)
 
     np.save('cache/X.npy', X)
     np.save('cache/Theta.npy', Theta)
